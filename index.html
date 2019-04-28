@@ -1,1 +1,89 @@
-Test github pages!
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Random Picker</title>
+    <style>
+
+    </style>
+  </head>
+  <body class="text-center">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+      <header class="masthead mb-auto">
+        <div class="inner">
+          <h3 class="masthead-brand">
+            Random Picker
+          </h3>
+        </div>
+      </header>
+
+      <main role="main">
+        <div class="form-group">
+          <label class="text-info">Choose winners' number</label>
+          <select class="form-control offset-md-5 col-md-2 offset-md-5 picker-select">
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="text-info">People</label>
+          <ul class="list-group offset-md-4 col-md-4 offset-md-4">
+          </ul>
+        </div>
+
+        <div class="my-4">
+          <button type="button" class="btn btn-dark" onClick="choose()">Choose</button>
+        </div>
+
+        <div class="card my-4 offset-md-4 col-md-4 offset-md-4 d-none winners-card">
+          <div class="card-body">
+
+          </div>
+        </div>
+      </main>
+
+      <footer class="mastfoot mt-auto">
+        <div class="inner">
+          <p>Maintained by <a href="https://github.com/seelowbei" rel="noopener nofollow" target="_blank">@seelowbei</a>
+        </div>
+      </footer>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js"></script>
+    <script>
+      function choose(){
+        var options = JSON.parse(localStorage.getItem("options"));
+        var selectedWinnersCount = Number($(".picker-select option:selected").val());
+        $(".winners-card").removeClass("d-none").addClass("d-flex");
+        const winners = _.sampleSize(options, selectedWinnersCount);
+        $(".card-body").empty();
+        winners.forEach(function(winner){
+          $(".card-body").append('<h4><span class="badge badge-pill badge-primary">' + winner + '</span></h4>');
+        })
+      }
+      function initOptions(){
+        if(!localStorage.getItem("options")){
+          localStorage.setItem("options", JSON.stringify(["Celine", "Ken", "Jany", "Jaslyn", "Justin", "Nazmi", "Sam", "Thiam Hock", "Vincent", "Zek"]));
+        }
+      }
+
+      function initOptionListAndSelect(){
+        var options = JSON.parse(localStorage.getItem("options"));
+        var optionsCount = options.length
+        options.forEach(function(option, index){
+          var count = index + 1
+          $(".list-group").append('<li class="list-group-item">' + option + '</li>')
+          if(count < optionsCount){
+            $('.picker-select').append($('<option>', {value: count, text: count}));
+          }
+        })
+      }
+
+      initOptions();
+      initOptionListAndSelect();
+    </script>
+  </body>
+</html>
