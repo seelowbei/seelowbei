@@ -5,6 +5,148 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Random Picker</title>
     <style>
+      .input-group-prepend, .remove{
+        cursor: pointer;
+      }
+      .confetti {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        width: 100%;
+        height: 200px;
+        overflow: hidden;
+      }
+      .confetti-piece {
+        position: absolute;
+        width: 8px;
+        height: 16px;
+        background: #ffd300;
+        top: 0;
+        opacity: 0;
+      }
+      .confetti-piece:nth-child(1) {
+        left: 7%;
+        transform: rotate(321486861525deg);
+        animation: makeItRain 1000ms infinite ease-out;
+        animation-delay: 558937427067ms;
+        animation-duration: 645193356790ms;
+      }
+      .confetti-piece:nth-child(2) {
+        left: 14%;
+        transform: rotate(13263885100deg);
+        animation: makeItRain 1000ms infinite ease-out;
+        animation-delay: 394343798370ms;
+        animation-duration: 794505100222ms;
+      }
+      .confetti-piece:nth-child(3) {
+        left: 21%;
+        transform: rotate(146383104711deg);
+        animation: makeItRain 1000ms infinite ease-out;
+        animation-delay: 318180509838ms;
+        animation-duration: 98523686263ms;
+      }
+      .confetti-piece:nth-child(4) {
+        left: 28%;
+        transform: rotate(178970867093deg);
+        animation: makeItRain 1000ms infinite ease-out;
+        animation-delay: 96553408374ms;
+        animation-duration: 52569129100ms;
+      }
+      .confetti-piece:nth-child(5) {
+        left: 35%;
+        transform: rotate(1767308995deg);
+        animation: makeItRain 1000ms infinite ease-out;
+        animation-delay: 729411724125ms;
+        animation-duration: 807741586855ms;
+      }
+      .confetti-piece:nth-child(6) {
+        left: 42%;
+        transform: rotate(168201518167deg);
+        animation: makeItRain 1000ms infinite ease-out;
+        animation-delay: 710323717812ms;
+        animation-duration: 125487472696ms;
+      }
+      .confetti-piece:nth-child(7) {
+        left: 49%;
+        transform: rotate(246479704965deg);
+        animation: makeItRain 1000ms infinite ease-out;
+        animation-delay: 233084353731ms;
+        animation-duration: 979107980044ms;
+      }
+      .confetti-piece:nth-child(8) {
+        left: 56%;
+        transform: rotate(118565233462deg);
+        animation: makeItRain 1000ms infinite ease-out;
+        animation-delay: 446178306462ms;
+        animation-duration: 604578246205ms;
+      }
+      .confetti-piece:nth-child(9) {
+        left: 63%;
+        transform: rotate(125940852601deg);
+        animation: makeItRain 1000ms infinite ease-out;
+        animation-delay: 664108863093ms;
+        animation-duration: 389973099619ms;
+      }
+      .confetti-piece:nth-child(10) {
+        left: 70%;
+        transform: rotate(9417397714deg);
+        animation: makeItRain 1000ms infinite ease-out;
+        animation-delay: 312452409504ms;
+        animation-duration: 694313383756ms;
+      }
+      .confetti-piece:nth-child(11) {
+        left: 77%;
+        transform: rotate(91177994065deg);
+        animation: makeItRain 1000ms infinite ease-out;
+        animation-delay: 661592366646ms;
+        animation-duration: 738180872113ms;
+      }
+      .confetti-piece:nth-child(12) {
+        left: 84%;
+        transform: rotate(257673792982deg);
+        animation: makeItRain 1000ms infinite ease-out;
+        animation-delay: 409611365055ms;
+        animation-duration: 848816688085ms;
+      }
+      .confetti-piece:nth-child(13) {
+        left: 91%;
+        transform: rotate(106848554579deg);
+        animation: makeItRain 1000ms infinite ease-out;
+        animation-delay: 694518785541ms;
+        animation-duration: 1044790902682ms;
+      }
+      .confetti-piece:nth-child(odd) {
+        background: #17d3ff;
+      }
+      .confetti-piece:nth-child(even) {
+        z-index: 1;
+      }
+      .confetti-piece:nth-child(4n) {
+        width: 5px;
+        height: 12px;
+        animation-duration: 2000ms;
+      }
+      .confetti-piece:nth-child(3n) {
+        width: 3px;
+        height: 10px;
+        animation-duration: 2500ms;
+        animation-delay: 1000ms;
+      }
+      .confetti-piece:nth-child(4n-7) {
+        background: #ff4e91;
+      }
+      @keyframes makeItRain {
+        from {
+          opacity: 0;
+        }
+        50% {
+          opacity: 1;
+        }
+        to {
+          transform: translateY(200px);
+        }
+      }
 
     </style>
   </head>
@@ -27,7 +169,14 @@
 
         <div class="form-group">
           <label class="text-info">People</label>
+          <div class="input-group mb-2 mr-sm-2 offset-md-4 col-md-4 offset-md-4">
+            <input type="text" class="form-control name" placeholder="Name">
+            <div class="input-group-prepend add">
+              <div class="input-group-text">+</div>
+            </div>
+          </div>
           <ul class="list-group offset-md-4 col-md-4 offset-md-4">
+
           </ul>
         </div>
 
@@ -37,7 +186,21 @@
 
         <div class="card my-4 offset-md-4 col-md-4 offset-md-4 d-none winners-card">
           <div class="card-body">
-
+          </div>
+          <div class="confetti">
+            <div class="confetti-piece"></div>
+            <div class="confetti-piece"></div>
+            <div class="confetti-piece"></div>
+            <div class="confetti-piece"></div>
+            <div class="confetti-piece"></div>
+            <div class="confetti-piece"></div>
+            <div class="confetti-piece"></div>
+            <div class="confetti-piece"></div>
+            <div class="confetti-piece"></div>
+            <div class="confetti-piece"></div>
+            <div class="confetti-piece"></div>
+            <div class="confetti-piece"></div>
+            <div class="confetti-piece"></div>
           </div>
         </div>
       </main>
@@ -64,26 +227,71 @@
           $(".card-body").append('<h4><span class="badge badge-pill badge-primary">' + winner + '</span></h4>');
         })
       }
+
+      function getOptions(){
+        return JSON.parse(localStorage.getItem("options"));
+      }
+
+      function setOptions(options){
+        localStorage.setItem("options", JSON.stringify(options));
+      }
+
       function initOptions(){
-        if(!localStorage.getItem("options")){
-          localStorage.setItem("options", JSON.stringify(["Celine", "Ken", "Jany", "Jaslyn", "Justin", "Nazmi", "Sam", "Thiam Hock", "Vincent", "Zek"]));
+        if(_.isEmpty(getOptions())){
+          setOptions(["Celine", "Ken", "Jany", "Jaslyn", "Justin", "Nazmi", "Sam", "Thiam Hock", "Vincent", "Zek"]);
         }
       }
 
+      function appendOption(option){
+        $(".list-group").append(
+          '<li class="list-group-item d-flex justify-content-between align-items-center"><span>'
+            + option + '</span><span class="badge badge-danger rounded remove">X</span></li>');
+      }
+
       function initOptionListAndSelect(){
-        var options = JSON.parse(localStorage.getItem("options"));
+        var options = getOptions();
         var optionsCount = options.length
         options.forEach(function(option, index){
-          var count = index + 1
-          $(".list-group").append('<li class="list-group-item">' + option + '</li>')
+          var count = index + 1;
+          appendOption(option);
           if(count < optionsCount){
             $('.picker-select').append($('<option>', {value: count, text: count}));
           }
         })
       }
 
+      function addToList(){
+        var name = $(".name").val();
+        var options = getOptions();
+        options.push(name);
+        setOptions(options);
+        appendOption(name);
+        $(".name").val("");
+      }
+
       initOptions();
       initOptionListAndSelect();
+
+      $(document).on("click", ".add", function(e) {
+        addToList();
+      });
+
+      $(document).on("click", ".remove", function(e) {
+        var delName = $(this).siblings().text();
+        var options = getOptions();
+        var delIndex = _.findIndex(options, function(o){
+          return o === delName
+        });
+        options.splice(delIndex, 1);
+        setOptions(options);
+        $(this).parent().remove();
+      });
+
+      $(".name").keyup(function(event) {
+        if (event.keyCode === 13) {
+          addToList();
+        }
+      });
     </script>
   </body>
 </html>
